@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "612570334345",
+    "project_id": "danparking-42afe",
+    "storage_bucket": "danparking-42afe.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:612570334345:android:b7c31eb7e1d8bc6855b258",
+        "android_client_info": {
+          "package_name": "com.example.dan_parking"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "612570334345-ojvi0gfj68fv8vc2epdgkol3kmh49bmf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBaNujc08IBwEAVDLWO-Se7_moiILnTksU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "612570334345-ojvi0gfj68fv8vc2epdgkol3kmh49bmf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
