@@ -1,4 +1,4 @@
-
+import 'package:danpark/location/locationfinder.dart';
 import 'package:danpark/models/app_provider.dart';
 import 'package:danpark/screens/home_screen.dart';
 import 'package:flutter/material.dart';
@@ -28,7 +28,12 @@ class _PhoneNumberRegistrationState extends State<PhoneNumberRegistration> {
   String completePhoneNumber = "";
   bool showloading = false;
   FirebaseAuth _auth = FirebaseAuth.instance;
+    @override
+  void initState() {
+    // TODO: implement initState
 
+    super.initState();
+  }
   void signInWithAuthCredential(PhoneAuthCredential phoneAuthCredential) async {
             setState(() {
               showloading = true;

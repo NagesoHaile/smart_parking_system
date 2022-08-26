@@ -16,7 +16,8 @@ class MapScreen extends StatelessWidget {
         children: [
          OSMFlutter(
           controller: _mapController,
-          trackMyPosition: false,
+          trackMyPosition: true,
+          isPicker:true,
           initZoom: 12,
           minZoomLevel: 8,
           maxZoomLevel: 14,
