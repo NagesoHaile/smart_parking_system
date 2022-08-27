@@ -1,10 +1,10 @@
 import 'package:danpark/location/locationfinder.dart';
-import 'package:danpark/models/app_provider.dart';
 import 'package:danpark/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:provider/provider.dart';
+import 'package:danpark/provider/app_provider.dart';
 final FirebaseAuth auth = FirebaseAuth.instance;
     enum ScreenState {
       SHOW_MOBILE_FORM_STATE,
@@ -238,6 +238,7 @@ class _PhoneNumberRegistrationState extends State<PhoneNumberRegistration> {
 
                  ElevatedButton(
                    onPressed: () {
+                    // Provider.of<AppProvider>(context,listen: true).getLocation();
                    PhoneAuthCredential authCredential = PhoneAuthProvider.credential(
                        verificationId: verificationId,
                        smsCode: codeController.text
@@ -246,7 +247,6 @@ class _PhoneNumberRegistrationState extends State<PhoneNumberRegistration> {
                    },
                    style: ElevatedButton.styleFrom(
                        primary: Colors.greenAccent,
-
                    ),
                    child: Container(
                      height: 50.0,

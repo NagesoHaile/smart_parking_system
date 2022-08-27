@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 
+import '../provider/app_provider.dart';
 import 'map_screen.dart';
 import 'package:geolocator/geolocator.dart';
-
+import 'package:provider/provider.dart';
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
@@ -21,8 +22,8 @@ class _HomeScreenState extends State<HomeScreen> {
     // cmc
     {
       "location name": "CMC",
-      "latitude": 9.021121,
-      "longitude": 38.872594,
+      "latitude": 9.019309,
+      "longitude": 38.84702,
     },
     //civil service university
     {
@@ -94,8 +95,8 @@ class _HomeScreenState extends State<HomeScreen> {
   Position? currentUserPosition;
   var myLocation= '';
   var distanceInMeter;
-   List distanceList = [];
-   List sortedLocation = [];
+   late List distanceList = [];
+
 
      getLocation() async {
     bool serviceEnabled;
@@ -116,32 +117,32 @@ class _HomeScreenState extends State<HomeScreen> {
       }
 
        var position = await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
-
+      List sortedLocation = [];
       for(var location in locations){
        var distance = await Geolocator.distanceBetween(position.latitude, position.longitude,
            location['latitude'], location['longitude']);
        var locationName = location['location name'];
        var roundedDistance = (distance/1000).toStringAsFixed(2);
-       distanceList.add(roundedDistance);
-
+       var fullInfo = [
+         locationName,
+         roundedDistance
+       ];
+       distanceList.add(fullInfo);
       }
-
-      setState(() {
-
-      });
    }
 
   @override
   void initState() {
     // // TODO: implement initState
 
-   getLocation();
-   distanceList.sort();
+   // getLocation();
     super.initState();
+
   }
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.greenAccent,
@@ -256,7 +257,9 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                           ElevatedButton(
                               onPressed: (){
-                                //print(getLocation());
+                                 Provider.of<AppProvider>(context).distanceList;
+                                print(distanceList);
+
                               },
                               style: ElevatedButton.styleFrom(
                                 primary: Colors.greenAccent
@@ -290,45 +293,45 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     ParkingSpot(
                       'images/dan-splash.jpg',
-                      'CMC, Ethiopian Civil Service University',
+                      "${Provider.of<AppProvider>(context).distanceList[0][0]}",
                       'DanParking',
-                      " ${distanceList[0]}km away"
+                      " ${Provider.of<AppProvider>(context).distanceList[0][1]}km away"
                     ),
                     Divider(
                       indent:70,
                     ),
                     ParkingSpot(
                         'images/parking.jpg',
-                        'Merkato',
+                        "${Provider.of<AppProvider>(context).distanceList[1][0]}",
                         'DanParking',
-                        "${distanceList[1]}km away"
+                        "${Provider.of<AppProvider>(context).distanceList[1][1]}km away"
                     ),
                     Divider(
                       indent:70,
                     ),
                     ParkingSpot(
                         'images/parking2.jpg',
-                        'Saris',
+                        "${Provider.of<AppProvider>(context).distanceList[2][0]}",
                         'DanParking',
-                        "${distanceList[2]}km away"
+                        "${Provider.of<AppProvider>(context).distanceList[2][1]}km away"
                     ),
                     Divider(
                       indent:70,
                     ),
                     ParkingSpot(
                         'images/splash.png',
-                        'Estifanos',
+                        "${Provider.of<AppProvider>(context).distanceList[3][0]}",
                         'DanParking',
-                        "${distanceList[3]}km away"
+                        "${Provider.of<AppProvider>(context).distanceList[3][1]}km away"
                     ),
                     Divider(
                       indent:70,
                     ),
                     ParkingSpot(
                         'images/parking4.jpg',
-                        'Megenagna',
+                        "${Provider.of<AppProvider>(context).distanceList[4][0]}",
                         'DanParking',
-                        "${distanceList[4]}km away"
+                        "${Provider.of<AppProvider>(context).distanceList[4][1]}km away"
                     ),
                     Divider(
                       indent:70,

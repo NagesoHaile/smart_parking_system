@@ -1,4 +1,5 @@
-import 'package:danpark/models/app_provider.dart';
+
+import 'package:danpark/provider/app_provider.dart';
 import 'package:danpark/screens/on_boarding_screen.dart';
 import 'package:danpark/screens/phone_number_registration.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -21,7 +22,7 @@ class DanPark extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (BuildContext context)=>AppProvider(),
+      create: (context)=>AppProvider(),
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         home:OnBoardingScreen(),

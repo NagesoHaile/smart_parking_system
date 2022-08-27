@@ -3,6 +3,7 @@ import 'package:danpark/screens/phone_number_registration.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:geolocator/geolocator.dart';
 class OnBoardingScreen extends StatefulWidget {
   const OnBoardingScreen({Key? key}) : super(key: key);
 
@@ -11,7 +12,6 @@ class OnBoardingScreen extends StatefulWidget {
 }
 
 class _OnBoardingScreenState extends State<OnBoardingScreen> {
-
 
   final controller = PageController();
   bool isEndPage =false;
@@ -68,9 +68,9 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
         height: 60,
         child: TextButton(
             onPressed: () async {
-              final sharedPrefs=  await SharedPreferences.getInstance();
-              sharedPrefs.setBool('goToHome', true);
-              Navigator.push(context, MaterialPageRoute(builder: (context)=> PhoneNumberRegistration()));
+             // final sharedPrefs=  await SharedPreferences.getInstance();
+              //sharedPrefs.setBool('goToHome', true);
+                Navigator.push(context, MaterialPageRoute(builder: (context)=> PhoneNumberRegistration()));
             },
             style: TextButton.styleFrom(
                 primary: Colors.greenAccent
@@ -192,57 +192,4 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
     ),
   );
 }
-// class onBoardingScreenContent extends StatelessWidget {
-//   final String imageUrl;
-//   final String title;
-//   final String subTitle;
-//   final Color color;
-//   onBoardingScreenContent({required this.imageUrl,
-//     required this.title,
-//     required this.subTitle,
-//     required this.color});
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return Container(
-//       color: color,
-//       child: Column(
-//         mainAxisAlignment: MainAxisAlignment.center,
-//         children: [
-//           Image.asset(
-//             imageUrl,
-//             fit: BoxFit.cover,
-//             width: double.infinity,
-//           ),
-//           const SizedBox(
-//             height: 70,
-//           ),
-//           Text(
-//             title,
-//             style: TextStyle(
-//               fontWeight: FontWeight.bold,
-//               fontSize: 28,
-//               color: Colors.teal.shade700,
-//             ),
-//           ),
-//           // const SizedBox(
-//           //   height: 5,
-//           // ),
-//           Container(
-//             padding: const EdgeInsets.symmetric(
-//                 horizontal: 40,
-//                 vertical: 10
-//             ),
-//             child: Text(
-//               subTitle,
-//               style: TextStyle(
-//                 color: Colors.white70,
-//                 fontSize: 18,
-//               ),
-//             ),
-//           )
-//         ],
-//       ),
-//     );
-//   }
-// }
+
